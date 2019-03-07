@@ -20,7 +20,15 @@ from django.http import HttpResponse
 def hello(request):
     return HttpResponse('Hello Word')
 
+def bmi(request):
+    heigh = float(request.GET.get('heigh'))
+    kg = float(request.GET.get('kg'))
+
+    bmi = kg / ((heigh / 100) ** 2)
+    return HttpResponse('BMI = {}'.format(bmi))
+
 urlpatterns = [
     path('hello/', hello),
+    path('bmi/', bmi),
     path('admin/', admin.site.urls),
 ]
