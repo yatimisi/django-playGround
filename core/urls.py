@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def hello(request):
@@ -24,11 +25,14 @@ def hello(request):
 
 # http://127.0.0.1:8000/bmi/?kg=65&heigh=179
 def bmi(request):
+    print(request.GET)
     heigh = float(request.GET.get('heigh'))
     kg = float(request.GET.get('kg'))
-
     bmi = kg / ((heigh / 100) ** 2)
-    return HttpResponse('BMI = {}'.format(bmi))
+    return render(request, 'bmi.html', {
+        'bmi': bmi,
+    })
+    # return HttpResponse('BMI = {}'.format(bmi))
 
 
 urlpatterns = [
