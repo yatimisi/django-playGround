@@ -25,14 +25,18 @@ def hello(request):
 
 # http://127.0.0.1:8000/bmi/?kg=65&heigh=179
 def bmi(request):
-    print(request.GET)
-    heigh = float(request.GET.get('heigh'))
-    kg = float(request.GET.get('kg'))
-    bmi = kg / ((heigh / 100) ** 2)
-    return render(request, 'bmi.html', {
-        'bmi': bmi,
-    })
-    # return HttpResponse('BMI = {}'.format(bmi))
+    heigh = request.GET.get('heigh', '')
+    kg = request.GET.get('kg', '')
+
+    if heigh != '' and kg != '':
+        heigh = float(heigh)
+        kg = float(kg)
+        bmi = kg / ((heigh / 100) ** 2)
+        return render(request, 'bmi.html', {
+            'bmi': bmi, 
+        })
+
+    return render(request, 'bmi-input.html')
 
 
 urlpatterns = [
