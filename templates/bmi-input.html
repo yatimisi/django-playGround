@@ -1,7 +1,20 @@
-<form action="" method="POST">
-    {% csrf_token %}
-    
-    {{ form.as_p }}
+{# Load the tag library #}
+{% load bootstrap4 %}
 
-    <button type="submit">送出</button>
-</form>
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<div class="row m-3">
+    <div class="col">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+            {% endbuttons %}
+        </form>
+    </div>
+</div>
