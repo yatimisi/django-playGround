@@ -1,9 +1,9 @@
 <h1>Candidate List</h1>
-
+<a href="/candidates/add/">Add</a>
 <hr>
 
 <ul>
     {% for candidate in candidates %}
-        <li>{{ candidate.name }}</li>
+        <li>{{ candidate.name }}, <a href="/candidates/{{ candidate.pk }}/edit/">Edit</a>, <a href="/candidates/{{ candidate.pk }}/delete/">Delete</a></li>
     {% endfor %}
 </ul>
