@@ -3,22 +3,14 @@
   <div class="col-sm-8 offset-sm-2 col-10 offset-1">
     <h1>#{{ candidate.pk }} - {{ candidate.name }}</h1>
     <hr />
-    <div class="row">
-      <div class="col-1">
-        年齡:
-      </div>
-      <div class="col">
-        {{ candidate.age }}
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-1">
-        政見:
-      </div>
-      <div class="col">
-        {{ candidate.politic }}
-      </div>
-    </div>
+    <p>名字：{{ candidate.name }}</p>
+    <p>年齡：{{ candidate.age }}</p>
+    <p>政見：{{ candidate.politic | linebreaks }}</p>
+
+    {% if candidate.image %}
+      <hr>
+      <img src="{{ candidate.image.url }}" alt="{{ candidate.name }}">
+    {% endif %}
   </div>
 </div>
 

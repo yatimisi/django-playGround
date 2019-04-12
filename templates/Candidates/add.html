@@ -1,11 +1,25 @@
-{% extends "layout.html" %}
-
-{% block main %}
-  <div class="row">
-      <div class="col col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-          <h1>新增候選人</h1>
-          <hr>
-          {% include "shared/form.html" %}
-      </div>
+{% extends "layout.html" %} {% block main %}
+<div class="row">
+  <div class="col col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <h1>新增候選人</h1>
+    <hr />
+    {% include "shared/form.html" %}
+    <img id="priview" />
   </div>
+</div>
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $("#priview").attr("src", e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#id_image").change(function() {});
+</script>
 {% endblock main %}
